@@ -1,0 +1,13 @@
+{
+    "name": "assignment5/addmembers",
+    "description": "a plugin to add members",
+    "type": "project",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "./inc"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
