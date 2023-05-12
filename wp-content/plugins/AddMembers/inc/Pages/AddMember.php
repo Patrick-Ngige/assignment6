@@ -1,25 +1,26 @@
 <?php
 /**
- * @package AddMembers
+ * @package AddMembersPlugin
  */
 
 namespace Inc\Pages;
 
-class AddMembers{
+class AddMember{
     public function add(){
         $this->create_table_to_db();
         $this->add_member_to_db();
     }
 
+    //CREATING THE TABLE IN DATABASE
     function create_table_to_db(){
         global $wpdb;
 
         $table_name = $wpdb->prefix.'members';
 
-        $book_details = "CREATE TABLE IF NOT EXISTS ".$table_name."(
-            name text NOT NULL,
+        $member_details = "CREATE TABLE IF NOT EXISTS ".$table_name."(
+            name text NOT NULL AUTO_INCREMENT ,
             phone_number text NOT NULL,
-            email text NOT NULL
+            email text NOT NULL PRIMARY KEY
         );";
 
         require_once(ABSPATH.'wp-admin/includes/upgrade.php');

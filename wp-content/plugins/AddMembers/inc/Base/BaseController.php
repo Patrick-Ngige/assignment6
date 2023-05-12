@@ -1,6 +1,6 @@
 <?php
 /**
- * @package AddMembers
+ * @package AddMembersPlugin
  */
 
 namespace Inc\Base;

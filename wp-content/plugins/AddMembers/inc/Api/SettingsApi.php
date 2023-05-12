@@ -9,7 +9,7 @@ class SettingsApi{
 
     public $admin_pages = array();
     
-    public function AddMember(){
+    public function AddMembers(){
 
         if(!empty($this->admin_pages)){
             add_action('admin_menu', [$this, 'addAdminMenu']);

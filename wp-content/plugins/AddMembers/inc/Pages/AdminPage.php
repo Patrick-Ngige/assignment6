@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package AddMembers
+ * @package AddMembersPlugin
  */
 
 namespace Inc\Pages;
@@ -25,9 +25,9 @@ class AdminPage extends BaseController{
             'capability' => 'manage_options',
             'menu_slug'=> 'add_members',
             'callback'=> function(){
-                echo '<h2> AddMember Admin Page </h2>';
+                echo '<h2> AddMembers </h2>';
             },
-            'icon_url'=> 'dashicons-welcome-write-blog',
+            'icon_url'=> 'dashicons-plus',
             'position'=> 20
         ],
         [
@@ -38,13 +38,14 @@ class AdminPage extends BaseController{
             'callback'=> function(){
                 echo '<h2> ViewMembers </h2>';
             },
-            'icon_url'=> 'dashicons-buddicons-buddypress-logo',
+            'icon_url'=> 'dashicons-list-view',
             'position'=> 21
         ]
     ];
     }
 
     function AddMembers(){
-        $this->settings->AddPages( $this->pages )->AddMember();
+        $this->settings->AddPages( $this->pages )->AddMembers();
     }
+
 }
