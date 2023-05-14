@@ -15,37 +15,45 @@ class AdminPage extends BaseController{
 
     public $pages;
 
-    public function __construct(){
+    function register(){
         $this->settings = new SettingsApi();
-        
-    $this->pages= [
-        [
-            'page_title'=> 'Add Members',
-            'menu_title'=> 'Add Mmembers',
-            'capability' => 'manage_options',
-            'menu_slug'=> 'add_members',
-            'callback'=> function(){
-                echo '<h2> AddMembers </h2>';
-            },
-            'icon_url'=> 'dashicons-plus',
-            'position'=> 20
-        ],
-        [
-            'page_title'=> 'View Members',
-            'menu_title'=> 'View Members',
-            'capability' => 'manage_options',
-            'menu_slug'=> 'view_members',
-            'callback'=> function(){
-                echo '<h2> ViewMembers </h2>';
-            },
-            'icon_url'=> 'dashicons-list-view',
-            'position'=> 21
-        ]
-    ];
+
+        $this->setPages();
+
+
+        $this->settings->AddPages( $this->pages )->register();
     }
 
-    function AddMembers(){
-        $this->settings->AddPages( $this->pages )->AddMembers();
+    public function setPages(){ 
+        $this->pages= [
+        [
+            'page_title'=> 'Add Members',
+            'menu_title'=> 'Add Members',
+            'capability' => 'manage_options', 
+            'menu_slug'=> 'add_members',
+            'callback'=> function(){ return require_once( "$this->plugin_path/templates/addmember.php");}  ,
+            'icon_url'=> 'dashicons-plus',
+            'position'=> 200
+        ],
+       
+            [
+                'page_title'=> 'View Members',
+                'menu_title'=> 'View Members',
+                'capability' => 'manage_options',
+                'menu_slug'=> 'view_members',
+                'callback'=> function(){ return require_once( "$this->plugin_path/templates/viewmembers.php");} ,
+                'icon_url'=> 'dashicons-list-view',
+                'position'=> 201
+            ]
+        ];
     }
+
+    //  function addpage(){
+    //     add_menu_page('Add Members', 'Add Members', 'manage_options', 'add_member', [$this, 'addmembers'], 'dashicons-welcome-write-blog', 110);
+    // }
+
+    // function addmembers(){
+    //     require_once $this->plugin_path.'templates/addmember.php';  
+    // }
 
 }

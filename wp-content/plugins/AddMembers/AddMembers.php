@@ -20,7 +20,9 @@ defined('ABSPATH') or die('Security breaches identified');
 // Checking if composer exists
 if(file_exists(dirname(__FILE__).'/vendor/autoload.php')){
     require_once(dirname(__FILE__).'/vendor/autoload.php');
+
 }
+
 function activate_AddMembersPlugin(){
     Inc\Base\Activate::activate();
 }
@@ -36,5 +38,6 @@ register_deactivation_hook(__FILE__, 'deactivate_AddMembersPlugin');
 
 //Considering all classes as a service
 if(class_exists('Inc\\Init')){
+    // echo 'jhgjh';
     Inc\Init::register_services(); 
 }

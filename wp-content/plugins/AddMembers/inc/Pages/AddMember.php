@@ -6,7 +6,7 @@
 namespace Inc\Pages;
 
 class AddMember{
-    public function add(){
+    public function register(){
         $this->create_table_to_db();
         $this->add_member_to_db();
     }
@@ -18,13 +18,14 @@ class AddMember{
         $table_name = $wpdb->prefix.'members';
 
         $member_details = "CREATE TABLE IF NOT EXISTS ".$table_name."(
-            name text NOT NULL AUTO_INCREMENT ,
+            name varchar(200) NOT NULL AUTO_INCREMENT,
             phone_number text NOT NULL,
-            email text NOT NULL PRIMARY KEY
+            email text NOT NULL
         );";
 
         require_once(ABSPATH.'wp-admin/includes/upgrade.php');
         dbDelta($member_details);
+        echo 'Created';
     }
 
     function add_member_to_db(){
